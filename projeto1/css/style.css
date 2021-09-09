@@ -1,0 +1,48 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 20px 5px;
+}
+a:hover{
+    background-color: rgba(176 , 224, 230);
+    color: black;
+
+
+}
+
+body{
+    font-family: arial;
+    background: url(https://img.elo7.com.br/product/zoom/2D55940/papel-de-parede-paisagem-campo-arvores-area-verde-gg849-adesivo-campo.jpg);
+    background-size: 100%;
+}
+ul{
+    top: 60px;
+    list-style: none;
+    position: absolute;
+    width: 100%;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"]:checked ~nav{
+    transform: translateX(350px);
+}
+nav{
+    background-color: rgba(16, 16, 16, .5);
+    width: 350px;
+    height: 100%;
+    position: absolute;
+    left: -350px;
+    transition: all .5s;
+}
+label{
+    padding: 15px;
+    position:absolute;
+    z-index: 1;
+    border-style: solid;
+}
