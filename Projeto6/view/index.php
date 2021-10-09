@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <form method="POST" action="../controller/exibir_dados.php">
+
+    
+    <form method="POST" action="exibir.php">
         <div>
             <label>Email:</label>
             <input type="email" name="email" placeholder="Digite seu email*" required> <br><br>
