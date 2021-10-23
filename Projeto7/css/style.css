@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: cadetblue;
+    background-image: url(../img/fundo.jpg);
+    background-size: cover;
+    padding-left: 15px;
+    margin: 15px;
+
+}
+form{
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10%;
+    padding: 20px;
+    font-size: 30pt;
+}
+echo{
+    font-size: 20pt;
+    color: chocolate;
+}
+input{
+    padding: 15px;
+}
+input:hover{
+    background-color: yellow;
+}
