@@ -14,8 +14,7 @@
   Nota 3: <input type="text" name="nota3"><br>
   <input type="submit">
  </form>
- 
- <?php
+  <?php
   $num1=0;$num2=0;$num3=0;$situacao=0;
   $num1 = $_GET['nota1'];
   $num2 = $_GET['nota2'];
