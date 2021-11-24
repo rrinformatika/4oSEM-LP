@@ -12,6 +12,7 @@ class crud {
     public $telefone;
     public $senha;
     
+    
     public function setEmail($email)
      {
       $this->email = $email;
@@ -63,7 +64,6 @@ class crud {
     
      }
      
-
  function inserir_Usuario(){
      
     $conn= conectar();   
@@ -119,11 +119,86 @@ class crud {
     
 
   }
-  
+    function inserir_Livro($titulo_trecho,$trecho){ 
+
+    $conn= conectar();   
  
+    $sql = "INSERT INTO livro (titulo_trecho,trecho) values('$titulo_trecho','$trecho')";
+ 
+     mysqli_query($conn,$sql);   
+
+     echo"<script language='javascript' type='text/javascript'>alert('Trecho Cadastrado com sucesso');window.location.href='../View/frm_livro.php';</script>";
+ 
+   }
+public function excluir_Livro ($codigo_trecho){
+
+    $conn= conectar();   
+    
+    $cod_livro= mysqli_query($conn, "SELECT * FROM livro WHERE cod_trecho = '$codigo_trecho'");	
+    
+    if(mysqli_num_rows($cod_livro) == 0){
+              
+      echo"<script language='javascript' type='text/javascript'>alert('Não foi possível excluir');window.location.href='../View/frm_excluir.php';</script>";
+    }
+           else{	
+    
+                  $result_livro = "DELETE FROM livro WHERE cod_trecho = '$codigo_trecho'";
+                  
+                  mysqli_query($conn, $result_livro);
+      
+      if(mysqli_affected_rows($conn) != 0){
+          
+        echo"<script language='javascript' type='text/javascript'>alert('Excluído com sucesso');window.location.href='../View/frm_excluir.php';</script>";
+                     
+              }else{
+                  
+                  header("Location:../view/frm_excluir.php");
+                   
+                  
+              }
+    }
+  
+    
+   }
+   public function alterar_livro($cod_trecho, $titulo_trecho,$trecho){
+
+    $conn= conectar(); 
+    
+  	$pegacod_trecho = mysqli_query($conn, "SELECT * FROM livro WHERE cod_trecho = '$cod_trecho'");
+
+         if(mysqli_num_rows($pegacod_trecho) == 0){
+
+	    	echo "<script language='javascript' type='text/javascript'>alert('Este Código NÃO esta cadastrado em nossos registros');window.location.href='../View/frm_alterar.php'</script>";
+
+	      }else{		
+
+		
+          $result_livro = "UPDATE livro SET titulo_trecho = '$titulo_trecho', trecho = '$trecho' WHERE cod_trecho = '$cod_trecho'";
+
+         mysqli_query($conn,$result_livro);
+
+             if(mysqli_affected_rows($conn) != 0){
+            echo "
+
+                 <script language='javascript' type='text/javascript'>alert('Trecho do Livro alterado com sucesso!');window.location.href='../View/frm_livro.php'</script>";
+                 
+            
+             }else{
+                  echo " 
+                   <script language='javascript' type='text/javascript'>alert('Nao foi possivel alterar este trecho');window.location.href='../View/frm_alterar.php'</script>";
+                     
+                  
+                     
+              }
+
+
+        }
+
+
 
 
    }
+  }
   
 
   
