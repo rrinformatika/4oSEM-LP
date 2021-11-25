@@ -15,9 +15,10 @@ if (!isset($_SESSION["usuarioEmail"]) || !isset($_SESSION["usuarioSenha"])) {
     <html>
 
     <head>
-        <title>Perfil Usuário </title>
+        <title>Cadastro de Jogos</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
 
     <body>
@@ -29,7 +30,7 @@ if (!isset($_SESSION["usuarioEmail"]) || !isset($_SESSION["usuarioSenha"])) {
             echo $_SESSION['usuarioEmail'];
             echo "</span>"; ?>
             <br><br>
-            <a href="frm_cadJogos.php"><button>Cadastrar</button></a>
+            <a href="frm_cadastrarJogos.php"><button>Cadastrar</button></a>
 
 
             <!-- <a href="frm_alterar.php"><button>Alterar</button></a>
@@ -41,37 +42,41 @@ if (!isset($_SESSION["usuarioEmail"]) || !isset($_SESSION["usuarioSenha"])) {
                     <input type="submit" value="Voltar">
                 </form>
             </tfoot>
-            <div class="container">
-                <div class="jumbotron">
-                    <div class="row">
-                        <table>
+        </div>
+        <div>
+            <div>
+                <div id='tabela-consulta'>
+                    <table>
+                        <tr>
+                            <th>Nome do Jogo</th>
+                            <th>Plataforma</th>
+                            <th colspan="2">Opções</th>
+                        </tr>
+
+                        <?php
+                        include_once("../Model/conexao.php");
+
+                        $conn = conectar();
+                        $jogos = "SELECT * from jogo inner join plataforma on jogo.plataforma = plataforma.idPlat";
+                        $resultado_jogos = mysqli_query($conn, $jogos);
+                        while ($row_jogos = mysqli_fetch_assoc($resultado_jogos)) {
+                        ?>
+
                             <tr>
-                                <th>Nome do Jogo</th>
-                                <th>Plataforma</th>
+                                <td><?php echo $row_jogos['nomeJogo']; ?></td>
+                                <td><?php echo $row_jogos['nomePlat']; ?></td>
+                                <td><a href="frm_alterar.php?id=<?php echo $row_jogos['idJogo']?>"><button>Alterar</button></a></td>
+                                <td><a href="frm_excluir.php?id=<?php echo $row_jogos['idJogo']?>"><button>Excluir</button></a></td>
                             </tr>
 
-                            <?php
-                            include_once("../Model/conexao.php");
+                        <?php } ?>
 
-                            $conn = conectar();
-                            $jogos = "SELECT * from jogo inner join plataforma on jogo.plataforma = plataforma.idPlat";
-                            $resultado_jogos = mysqli_query($conn, $jogos);
-                            while ($row_jogos = mysqli_fetch_assoc($resultado_jogos)) {
-                            ?>
-
-                                <tr>
-                                    <td><?php echo $row_jogos['nomeJogo']; ?></td>
-                                    <td><?php echo $row_jogos['nomePlat']; ?></td>
-                                </tr>
-
-                            <?php } ?>
-
-                        </table>
-                    </div>
+                    </table>
                 </div>
-                <?php
-                include '../model/footer.php';
-                ?>
+            </div>
+            <?php
+            include '../model/footer.php';
+            ?>
     </body>
 
     </html>

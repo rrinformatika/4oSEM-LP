@@ -2,12 +2,16 @@
     margin: 0px;
     padding: 0px;
 };
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
-  width: 100%;
 
 }
+table{
+  width: 100%;
+}
+
 fieldset{
     margin: 10px 0px;
     background-color: gray;
@@ -18,7 +22,10 @@ legend{
     background-color: greenyellow;
     text-align: center;
 }
-
+#tabela-consulta {
+  width:100%;
+  height:80%;
+}
 .footer{
     position: relative;
     display: block;
@@ -26,6 +33,7 @@ legend{
     background-color: grey;
     text-align: center;
     padding: 20px;
+    width:max-content;
 }
 
 tfoot {
@@ -40,6 +48,29 @@ tfoot {
 }
 
 /* copiado de outro arquivo */
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
 
 * {
     box-sizing: border-box;
