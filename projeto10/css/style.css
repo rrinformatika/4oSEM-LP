@@ -2,12 +2,18 @@
     margin: 0px;
     padding: 0px;
 };
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
 
+}
 fieldset{
     margin: 10px 0px;
     background-color: gray;
 
 }
+
 legend{
     background-color: greenyellow;
     text-align: center;

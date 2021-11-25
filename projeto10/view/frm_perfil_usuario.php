@@ -25,8 +25,8 @@ if(!isset($_SESSION["usuarioEmail"]) || !isset($_SESSION["usuarioSenha"])){
 <body>
 <fieldset>
     <legend>Cadastro de Jogos</legend>
-    <a href="frm_acervo.php">Acessar a aplicação</a><br><br>
-    <a href=""></a>
+    <a href="frm_cadJogos.php">Cadastrar um jogo</a><br><br>
+    <a href="frm_cadPlataforma.php">Cadastro de Plataformas</a>
 </fieldset>
 <?php
     include '../model/footer.php';
