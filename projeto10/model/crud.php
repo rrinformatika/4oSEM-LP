@@ -63,7 +63,46 @@ class crud {
       return $this->senha;
     
      }
-     
+     public function getNomeJogo()
+     {
+       return $this->nomeJogo;
+     }
+     public function setNomeJogo($nomeJogo)
+     {
+       $this->nomeJogo = $nomeJogo;
+     }
+     public function getPlataforma()
+     {
+       return $this->plataforma;
+     }
+     public function setPlataforma($plataforma)
+     {
+       $this->plataforma = $plataforma;
+     }
+ 
+function inserir_Jogo(){
+  $conn = conectar();
+  $nomeJogo = $this->getNomeJogo();
+  $sql = "INSERT INTO jogo (nomeJogo,plataforma) values('".$this->getNomeJogo()."','".$this->getPlataforma()."')";
+  mysqli_query($conn,$sql);
+
+}
+function inserir_Plataforma(){
+  $conn = conectar();
+  $plataforma = $this->getPlataforma();
+  $sql = "INSERT INTO plataforma (nomePlat) values('".$this->getPlataforma()."')";
+  mysqli_query($conn,$sql);
+
+}
+function listarPlataforma(){
+  $conn = conectar();
+  $plataforma = $this->getPlataforma();
+  $sql = "SELECT * FROM PLATAFORMA";
+  $resultado = MYSQLI_QUERY($conn, $sql);
+  $listagem = mysqli_fetch_assoc($resultado);
+
+}    
+
  function inserir_Usuario(){
      
     $conn= conectar();   

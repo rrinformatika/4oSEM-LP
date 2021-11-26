@@ -45,34 +45,7 @@ if (!isset($_SESSION["usuarioEmail"]) || !isset($_SESSION["usuarioSenha"])) {
         </div>
         <div>
             <div>
-                <div id='tabela-consulta'>
-                    <table>
-                        <tr>
-                            <th>Nome do Jogo</th>
-                            <th>Plataforma</th>
-                            <th colspan="2">Opções</th>
-                        </tr>
 
-                        <?php
-                        include_once("../Model/conexao.php");
-
-                        $conn = conectar();
-                        $jogos = "SELECT * from jogo inner join plataforma on jogo.plataforma = plataforma.idPlat";
-                        $resultado_jogos = mysqli_query($conn, $jogos);
-                        while ($row_jogos = mysqli_fetch_assoc($resultado_jogos)) {
-                        ?>
-
-                            <tr>
-                                <td><?php echo $row_jogos['nomeJogo']; ?></td>
-                                <td><?php echo $row_jogos['nomePlat']; ?></td>
-                                <td><a href="frm_alterar.php?id=<?php echo $row_jogos['idJogo']?>"><button>Alterar</button></a></td>
-                                <td><a href="frm_excluir.php?id=<?php echo $row_jogos['idJogo']?>"><button>Excluir</button></a></td>
-                            </tr>
-
-                        <?php } ?>
-
-                    </table>
-                </div>
             </div>
             <?php
             include '../model/footer.php';

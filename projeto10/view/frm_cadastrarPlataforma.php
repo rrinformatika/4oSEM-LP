@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <form method="POST" action="../controller/controller_cadastrarJogos.php">
-        <label>Nome do Jogo:</label><input type="text" name="nomeJogo">
+    <form method="POST" action="../controller/controller_cadastrarPlataforma.php">
         <label>Plataforma:</label><input type="text" name="plataforma">
         <input type="submit" value="Cadastrar" name="botao">
     </form>

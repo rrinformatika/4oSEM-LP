@@ -180,6 +180,9 @@ div {
     text-align: center;    
       
 }
+form{
+  height:100px
+}
 .formulario input{
     width: 100%;
     background-color: #4CAF50;
