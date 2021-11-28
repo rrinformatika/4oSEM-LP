@@ -63,7 +63,46 @@ class crud {
       return $this->senha;
     
      }
-     
+     public function getNomeJogo()
+     {
+       return $this->nomeJogo;
+     }
+     public function setNomeJogo($nomeJogo)
+     {
+       $this->nomeJogo = $nomeJogo;
+     }
+     public function getPlataforma()
+     {
+       return $this->plataforma;
+     }
+     public function setPlataforma($plataforma)
+     {
+       $this->plataforma = $plataforma;
+     }
+ 
+function inserir_Jogo(){
+  $conn = conectar();
+  $nomeJogo = $this->getNomeJogo();
+  $sql = "INSERT INTO jogo (nomeJogo,plataforma) values('".$this->getNomeJogo()."','".$this->getPlataforma()."')";
+  mysqli_query($conn,$sql);
+
+}
+function inserir_Plataforma(){
+  $conn = conectar();
+  $plataforma = $this->getPlataforma();
+  $sql = "INSERT INTO plataforma (nomePlat) values('".$this->getPlataforma()."')";
+  mysqli_query($conn,$sql);
+
+}
+function listarPlataforma(){
+  $conn = conectar();
+  $plataforma = $this->getPlataforma();
+  $sql = "SELECT * FROM PLATAFORMA";
+  $resultado = MYSQLI_QUERY($conn, $sql);
+  $listagem = mysqli_fetch_assoc($resultado);
+
+}    
+
  function inserir_Usuario(){
      
     $conn= conectar();   
@@ -113,8 +152,7 @@ class crud {
         
         }else{            
        
-          echo"<script language='javascript' type='text/javascript'>alert('Login e/ou Senha incorretos');window.location.href='../view/frm_logar.html';</script>";
-         
+          echo"<script language='javascript' type='text/javascript'>alert('Login e/ou Senha incorretos');window.location.href='../view/frm_cadastrar.html';</script>";
         }
     
 
@@ -127,7 +165,7 @@ class crud {
  
      mysqli_query($conn,$sql);   
 
-     echo"<script language='javascript' type='text/javascript'>alert('Trecho Cadastrado com sucesso');window.location.href='../View/frm_livro.php';</script>";
+     echo"<script language='javascript' type='text/javascript'>alert('Trecho Cadastrado com sucesso');window.location.href='../View/frm_jogos.php';</script>";
  
    }
 public function excluir_Livro ($codigo_trecho){
@@ -196,7 +234,38 @@ public function excluir_Livro ($codigo_trecho){
 
 
 
+     echo"<script language='javascript' type='text/javascript'>alert('Trecho Cadastrado com sucesso');window.location.href='../View/frm_livro.php';</script>";
+ 
+   }
+public function excluir_Livro ($codigo_trecho){
 
+    $conn= conectar();   
+    
+    $cod_livro= mysqli_query($conn, "SELECT * FROM livro WHERE cod_trecho = '$codigo_trecho'");	
+    
+    if(mysqli_num_rows($cod_livro) == 0){
+              
+      echo"<script language='javascript' type='text/javascript'>alert('Não foi possível excluir');window.location.href='../View/frm_excluir.php';</script>";
+    }
+           else{	
+    
+                  $result_livro = "DELETE FROM livro WHERE cod_trecho = '$codigo_trecho'";
+                  
+                  mysqli_query($conn, $result_livro);
+      
+      if(mysqli_affected_rows($conn) != 0){
+          
+        echo"<script language='javascript' type='text/javascript'>alert('Excluído com sucesso');window.location.href='../View/frm_excluir.php';</script>";
+                     
+              }else{
+                  
+                  header("Location:../view/frm_excluir.php");
+                   
+                  
+              }
+    }
+  
+    
    }
   }
   

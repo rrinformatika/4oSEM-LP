@@ -9,7 +9,6 @@
 		return "Conexão não abre !" ;
                 
 	}else{
-        echo'conexao OK';  
 		return $conn ;
     }
 
